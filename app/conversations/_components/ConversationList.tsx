@@ -48,12 +48,13 @@ const ConversationList: React.FC<ConversationListProps> = ({
       });
     };
     const updateHandler = (conversation: FullConversationType) => {
+      // console.log(conversation);
       setItems((current) =>
         current.map((currentConversation) => {
           if (currentConversation.id === conversation.id) {
             return {
               ...currentConversation,
-              messages: conversation.messages,
+              messages: conversation.messages || currentConversation.messages,
             };
           }
           return currentConversation;
@@ -71,13 +72,13 @@ const ConversationList: React.FC<ConversationListProps> = ({
       }
     };
 
-    pusherClient.bind("conversation:me", newHandler);
+    pusherClient.bind("conversation:new", newHandler);
     pusherClient.bind("conversation:update", updateHandler);
     pusherClient.bind("conversation:remove", removeHandler);
 
     return () => {
       pusherClient.unsubscribe(pusherKey);
-      pusherClient.unbind("conversation:me", newHandler);
+      pusherClient.unbind("conversation:new", newHandler);
       pusherClient.unbind("conversation:update", updateHandler);
       pusherClient.unbind("conversation:remove", removeHandler);
     };
@@ -101,7 +102,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
             <div className="text-2xl font-bold text-neutral-800">Messages</div>
             <div
               onClick={() => setIsModalOpen(true)}
-              className="rounded-full p-2 bg-gray-100 text-gray-600 hover:opacity-75 transition"
+              className="rounded-full p-2 bg-gray-100 text-gray-600 hover:opacity-75 hover:text-sky-500 cursor-pointer transition"
             >
               <MdOutlineGroupAdd size={20} />
             </div>

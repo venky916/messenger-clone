@@ -28,7 +28,7 @@ const Form = () => {
     });
   };
 
-  const handleUpload = (result: any) => {
+  const handleUpload = (result:any) => {
     // console.log(result);
     axios.post("/api/messages", {
       image: result?.info?.secure_url,
@@ -40,7 +40,7 @@ const Form = () => {
     <div className="py-4 px-4 bg-white flex items-center gap-2 lg:gap-4 w-full">
       <CldUploadWidget
         uploadPreset="messenger"
-        onSuccess={(result, options) => {
+        onSuccess={(result) => {
           // console.log("Upload Success:", result, options);
           handleUpload(result); // Call handleUpload with the upload result
         }}

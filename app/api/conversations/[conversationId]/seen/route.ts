@@ -68,7 +68,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     await pusherServer.trigger(conversationId,"message:update",updatedMessage);
 
     return NextResponse.json(updatedMessage);
-  } catch (error: any) {
+  } catch (error) {
     console.log(error, "ERROR_MESSAGE_SEEN");
     return new NextResponse("Internal Error", { status: 500 });
   }

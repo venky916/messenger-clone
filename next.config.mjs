@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["next-auth"], 
+  transpilePackages: ["next-auth"],
 
   experimental: {
     swcPlugins: [["next-superjson-plugin", {}]],
@@ -19,7 +19,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
       },
+      {
+        protocol: "http",
+        hostname: "res.cloudinary.com",
+      },
     ],
+  },
+  eslint: {
+    dirs: ["pages", "utils"],
   },
 };
 

@@ -24,8 +24,12 @@ const useActiveChannel = () => {
     });
 
     channel.bind("pusher:member_added", (member: Record<string, any>) => {
-      remove(member.id);
+      add(member.id);
     });
+
+     channel.bind("pusher:member_removed", (member: Record<string, any>) => {
+       remove(member.id);
+     });
 
     return () => {
       if (activeChannel) {

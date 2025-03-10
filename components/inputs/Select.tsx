@@ -34,6 +34,7 @@ const Select: React.FC<SelectProps> = ({
             menuPortal: (base) => ({
               ...base,
               zIndex: 99999,
+              pointerEvents: "auto",
             }),
           }}
           classNames={{

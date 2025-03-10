@@ -36,7 +36,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
         <nav className="mt-4 flex flex-col justify-between items-center">
           <div
             onClick={() => setIsOpen(true)}
-            className="cursor-pointer hover:opacity-75 transition"
+            className="cursor-pointer hover:opacity-75 transition hover:text-sky-500"
           >
             <Avatar user={currentUser} />
           </div>

@@ -47,15 +47,19 @@ export async function DELETE(
       },
     });
 
-    existingConversation.users.forEach((user)=>{
-      if(user.email){
-        pusherServer.trigger(user.email,"conversation:remove",existingConversation);
+    existingConversation.users.forEach((user) => {
+      if (user.email) {
+        pusherServer.trigger(
+          user.email,
+          "conversation:remove",
+          existingConversation
+        );
       }
-    })
+    });
 
     return NextResponse.json(deleteConversation);
-  } catch (error: any) {
-    console.log(error, "ERROR_CONVERSATION_DELETE");
+  } catch (error) {
+    console.error(error, "ERROR_CONVERSATION_DELETE");
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

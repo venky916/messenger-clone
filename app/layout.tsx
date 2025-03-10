@@ -17,8 +17,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Messenger Clone",
-  description: "Messenger Clone",
+  title: "SwiftChat",
+  description: "SwiftChat",
 };
 
 export default function RootLayout({

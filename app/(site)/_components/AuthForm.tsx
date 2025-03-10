@@ -1,14 +1,14 @@
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/inputs/Input";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import { login } from "@/actions/login";
 import { signUp } from "@/actions/register";
 import { toast } from "react-hot-toast";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { useRouter } from "next/navigation";
 
@@ -78,7 +78,7 @@ const AuthForm = () => {
       callbackUrl: DEFAULT_LOGIN_REDIRECT,
     });
 
-    console.log(response);
+    // console.log(response);
     setIsLoading(false);
   };
 
@@ -149,7 +149,7 @@ const AuthForm = () => {
         <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
           <div>
             {variant === "LOGIN"
-              ? "New to Messenger?"
+              ? "New to SwiftChat?"
               : "Already have an Account?"}
           </div>
           <div onClick={toggleVariant} className="underline cursor-pointer">
